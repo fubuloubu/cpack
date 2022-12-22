@@ -1,13 +1,30 @@
 import re
 from typing import Literal
 
-from pydantic import (
-    AnyUrl,
-    BaseModel,
-    ConstrainedStr,
-    Extra,
-    root_validator,
-)
+from pydantic import AnyUrl
+from pydantic import BaseModel as _BaseModel
+from pydantic import ConstrainedStr, Extra, root_validator
+
+
+class BaseModel(_BaseModel):
+    # NOTE: Do this for repeatable, minified representation
+    def dict(self, *args, **kwargs) -> dict:
+        if "exclude_default" not in kwargs:
+            kwargs["exclude_defaults"] = True
+
+        return super().dict(*args, **kwargs)
+
+    def json(self, *args, **kwargs) -> str:
+        if "separators" not in kwargs:
+            kwargs["separators"] = (",", ":")
+
+        if "sort_keys" not in kwargs:
+            kwargs["sort_keys"] = True
+
+        if "exclude_default" not in kwargs:
+            kwargs["exclude_defaults"] = True
+
+        return super().json(*args, **kwargs)
 
 
 class Name(ConstrainedStr):
