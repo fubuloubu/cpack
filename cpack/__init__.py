@@ -9,11 +9,11 @@ class Name(ConstrainedStr):
 
 
 class DepPath(ConstrainedStr):
-    regex = re.compile("^[A-Za-z0-9\./]*\.[a-z]*$")
+    regex = re.compile(r"^[A-Za-z0-9\./]*\.[a-z]*$")
 
 
 class RelPath(ConstrainedStr):
-    regex = re.compile("^\./[A-Za-z0-9\./]*\.[a-z]*$")
+    regex = re.compile(r"^\./[A-Za-z0-9\./]*\.[a-z]*$")
 
 
 class Address(ConstrainedStr):
