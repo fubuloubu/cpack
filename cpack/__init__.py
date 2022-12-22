@@ -114,7 +114,6 @@ class Manifest(BaseModel):
         return data
 
     class Config:
-        extra = Extra.allow  # May define additional fields
         schema_extra = {
             "examples": [
                 {
