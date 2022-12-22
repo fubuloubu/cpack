@@ -1,7 +1,13 @@
-from pydantic import BaseModel, ConstrainedStr
-from pydantic import AnyUrl, FileUrl, Extra, root_validator, constr
-from typing import Literal
 import re
+from typing import Literal
+
+from pydantic import (
+    AnyUrl,
+    BaseModel,
+    ConstrainedStr,
+    Extra,
+    root_validator,
+)
 
 
 class Name(ConstrainedStr):
