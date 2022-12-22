@@ -41,9 +41,7 @@ class Link(BaseModel):
 
     class Config:
         schema_extra = {
-            "examples": [
-                {"uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"}
-            ]
+            "examples": [{"uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"}]
         }
 
 
@@ -62,9 +60,7 @@ class ContractType(BaseModel):
                         "./file.sol",
                         "depA/file.sol",
                     ],
-                    "output": {
-                        "uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"
-                    },
+                    "output": {"uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"},
                 }
             ]
         }
@@ -78,9 +74,7 @@ class Source(BaseModel):
         schema_extra = {
             "examples": [
                 {
-                    "link": [
-                        {"uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"}
-                    ],
+                    "link": [{"uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"}],
                 }
             ]
         }
@@ -138,22 +132,16 @@ class Manifest(BaseModel):
                     },
                     "sources": {
                         "./file.sol": {
-                            "link": {
-                                "uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"
-                            }
+                            "link": {"uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"}
                         },
                     },
                     "compilers": {
                         "solc-0.8.17": {
-                            "bin": {
-                                "uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"
-                            }
+                            "bin": {"uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"}
                         }
                     },
                     "dependencies": {
-                        "depA": {
-                            "uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"
-                        }
+                        "depA": {"uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"}
                     },
                 }
             ]
