@@ -56,7 +56,9 @@ setup(
     author_email="admin@apeworx.io",
     url="https://github.com/ApeWorX/cpack",
     include_package_data=True,
-    install_requires=[],
+    install_requires=[
+        "pydantic>=1.9.2,<2",
+    ],
     python_requires=">=3.8,<4",
     extras_require=extras_require,
     py_modules=["cpack"],
