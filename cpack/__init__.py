@@ -92,18 +92,12 @@ class Compiler(BaseModel):
 
     class Config:
         schema_extra = {
-            "examples": [
-                {
-                    "bin": {
-                        "uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"
-                    }
-                }
-            ]
+            "examples": [{"bin": {"uri": "ipfs://QmbBVxERnZ2ciQuRuZ45czd2DRgouCLEhibLWtC2CrH2j4"}}]
         }
 
 
 class Manifest(BaseModel):
-    manifest: Literal["dpm/v1"]
+    manifest: Literal["cpack/v1"]
     name: str = ""
     metadata: dict = {}
     types: dict[Name, ContractType] = {}
