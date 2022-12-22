@@ -29,23 +29,28 @@ class BaseModel(_BaseModel):
 
 class Name(ConstrainedStr):
     regex = re.compile("^[-A-Za-z0-9_]*$")
+    min_length = 1
 
 
 class DepPath(ConstrainedStr):
     regex = re.compile(r"^[A-Za-z0-9\./]*\.[a-z]*$")
+    min_length = 1
 
 
 class RelPath(ConstrainedStr):
     regex = re.compile(r"^\./[A-Za-z0-9\./]*\.[a-z]*$")
+    min_length = 1
 
 
 class Address(ConstrainedStr):
     regex = re.compile("^0x[A-Fa-f0-9]{40}$")
+    min_length = 42
+    max_length = 42
 
 
 class Checksum(BaseModel):
-    algorithm: str = "sha256"
-    hash: str = ""
+    algorithm: str
+    hash: str
 
     class Config:
         schema_extra = {
@@ -124,15 +129,16 @@ class Manifest(BaseModel):
 
     @root_validator()
     def validate_types(cls, data):
-        for ct in data["types"].values():
-            assert ct.compiler in data["compilers"]
+        if "types" in data:
+            for ct in data["types"].values():
+                assert ct.compiler in data["compilers"]
 
-            for src in ct.sources:
-                if src.startswith("./"):
-                    assert src in data["sources"]
-                else:
-                    assert "/" in src
-                    assert src.split("/")[0] in data["dependencies"]
+                for src in ct.sources:
+                    if src.startswith("./"):
+                        assert src in data["sources"]
+                    else:
+                        assert "/" in src
+                        assert src.split("/")[0] in data["dependencies"]
 
         return data
 
